@@ -1,17 +1,22 @@
 package me.elendrial.cardGameBase.cards;
 
-public class StandardCard {
+import java.io.Serializable;
+import java.util.HashMap;
+
+public class StandardCard implements Serializable{
 	
+	
+	private static final long serialVersionUID = 1217722197989343764L;
 	public String name;
 	public String desc;
 	public String code;
 	public String textureName;
 	public String backTextureName;
-	public String[] identifiers;
+	public HashMap<String, Object> identifiers = new HashMap<String, Object>();
 	
 	public StandardCard(){}
-
-	public StandardCard(String name, String desc, String code, String textureName, String backTextureName, String[] identifiers) {
+	
+	public StandardCard(String name, String desc, String code, String textureName, String backTextureName, HashMap<String, Object> identifiers) {
 		this.name = name;
 		this.desc = desc;
 		this.code = code;

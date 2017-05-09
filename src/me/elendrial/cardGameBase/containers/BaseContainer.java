@@ -11,6 +11,7 @@ public class BaseContainer {
 	public ArrayList<BaseCardContainer> shownCards = new ArrayList<BaseCardContainer>();
 	
 	public static int players;
+	public static int turn = 0;
 	
 	public BaseContainer(){}
 	public BaseContainer(StandardDeck[] decks) {
