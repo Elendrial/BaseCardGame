@@ -1,8 +1,5 @@
 package me.elendrial.cardGameBase.server;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.PrintWriter;
 import java.net.Socket;
 
 public class GameClient implements Runnable{
@@ -24,21 +21,19 @@ public class GameClient implements Runnable{
 	}
 	
 	private void connectToServer(){
-		System.out.println("Connecting to server at: " + computer + ":" + port);
+		System.out.println("[Client]: Connecting to server at: " + computer + ":" + port);
 
-		try ( 	Socket echo = new Socket(computer, port);
-				PrintWriter out = new PrintWriter(echo.getOutputStream(), true); // Writing to what goes out of socket, not what comes out of socket.
-				BufferedReader in = new BufferedReader(new InputStreamReader(echo.getInputStream())); // Reading what comes in from socket.
-			) {
+		try (Socket socket = new Socket(computer, port);) {
 			
-			protocol.setupVars(out, in);
+			protocol.setupVars(socket);
 			
-			System.out.println("Successfully connected to server");
+			System.out.println("[Client]: Successfully connected to server");
 			
-			out.println("init");
+			protocol.sendData("init");
 			
 			while(running){
 				protocol.recieveData();
+				Thread.sleep(1);
 			}
 			
 		} catch (Exception e) {e.printStackTrace();}
@@ -49,5 +44,23 @@ public class GameClient implements Runnable{
 		running = true;
 		connectToServer();
 	}
+	
+	public static GameProtocol getProtocol(){
+		return protocol;
+	}
+
+	public static String getHost() {
+		return computer;
+	}
+
+	public static int getPort() {
+		return port;
+	}
+
+	public static boolean isRunning() {
+		return running;
+	}
+	
+	
 	
 }

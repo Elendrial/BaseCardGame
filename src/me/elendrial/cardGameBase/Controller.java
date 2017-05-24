@@ -31,7 +31,7 @@ public class Controller {
 		startGame(new Window(windowTitle, windowWidth, windowHeight));
 	}
 	
-	public static void startGameAsHost(String windowTitle, int windowWidth, int windowHeight, int port, GameProtocol protocol){
+	public static void startGameAsHost(String windowTitle, int windowWidth, int windowHeight, int port, Class<? extends GameProtocol> protocol){
 		startGame(windowTitle, windowWidth, windowHeight);
 		GameServer.hostServer(port, protocol);
 	}
