@@ -7,16 +7,16 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class CardServer implements Runnable {
+public class GameServer implements Runnable {
 	
 	private static int port;
 	private static boolean running;
-	private static CardProtocol protocol;
+	private static GameProtocol protocol;
 	
-	public static void hostServer(int port, CardProtocol protocol){
-		CardServer.port = port;
-		CardServer.protocol = protocol;
-		(new Thread(new CardServer())).start();
+	public static void hostServer(int port, GameProtocol protocol){
+		GameServer.port = port;
+		GameServer.protocol = protocol;
+		(new Thread(new GameServer())).start();
 	}
 	
 	public static void closeServer(){
@@ -37,8 +37,6 @@ public class CardServer implements Runnable {
 			protocol.setupVars(out, in);
 			
 			System.out.println("Server open and client " + clientSocket.getInetAddress().getHostName() + " has connected successfully");
-			
-			//protocol.
 			
 			while(running){
 				// TODO: Check that this all works somehow, may need to make the basic hearthstone first, who knows?

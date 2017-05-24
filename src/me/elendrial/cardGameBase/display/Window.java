@@ -15,31 +15,36 @@ public class Window implements Runnable{
     public JFrame frame;
     public Display display;
     
-    public int WIDTH, HEIGHT;
-    public String TITLE;
+    public int width, height;
+    public String title;
 
     public boolean isRunning;
     
+    public Window(){}
     public Window(String TITLE, int WIDTH, int HEIGHT){
         // Set the variables
-        this.TITLE = TITLE;
-        this.WIDTH = WIDTH;
-        this.HEIGHT = HEIGHT;
+        this.title = TITLE;
+        this.width = WIDTH;
+        this.height = HEIGHT;
 
         // Setup Window
         this.frame = new JFrame(TITLE);
         this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.frame.getContentPane().setPreferredSize(new Dimension(WIDTH, HEIGHT));
+        
+        createGUI();
+        
         this.frame.setResizable(false);
         this.frame.pack();
         this.frame.setLocationRelativeTo(null);
         this.frame.setVisible(true);
-
-        // Create the display
-        this.display = new Display(this);
-        this.frame.add(this.display);
     }
 
+	public void createGUI(){
+		this.display = new Display(this);
+		this.frame.add(this.display);
+	}
+    
     public void start(){
         isRunning = true;
         new Thread(this).start();
@@ -61,7 +66,7 @@ public class Window implements Runnable{
         Graphics g = bs.getDrawGraphics();
         
         // Clear the graphics
-        g.clearRect(0, 0, WIDTH, HEIGHT);
+        g.clearRect(0, 0, width, height);
         
         // Draw the display
         this.display.render(g);

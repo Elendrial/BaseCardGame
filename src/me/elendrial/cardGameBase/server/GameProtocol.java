@@ -6,13 +6,13 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 @SuppressWarnings("unused")
-public abstract class CardProtocol {
+public abstract class GameProtocol {
 	
 //	private ServerSocket serverSocket;
 //	private Socket clientSocket;     
 	
-	private PrintWriter out;                   
-	private BufferedReader in;
+	protected PrintWriter out;                   
+	protected BufferedReader in;
 	
 	public void setupVars(/*ServerSocket sSock, Socket cSock, */PrintWriter out, BufferedReader in){
 //		serverSocket = sSock;

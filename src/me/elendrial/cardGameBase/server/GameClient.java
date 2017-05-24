@@ -1,24 +1,22 @@
-package me.elendrial.cardGameBase.InputHandler;
+package me.elendrial.cardGameBase.server;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-import me.elendrial.cardGameBase.server.CardProtocol;
-
-public class ClientListener implements Runnable{
+public class GameClient implements Runnable{
 	
 	private static String computer;
 	private static int port;
 	private static boolean running = false;
-	private static CardProtocol protocol;
+	private static GameProtocol protocol;
 	
-	public static void connectToServer(String computer, int port, CardProtocol protocol){
-		ClientListener.computer = computer;
-		ClientListener.port = port;
-		ClientListener.protocol = protocol;
-		(new Thread(new ClientListener())).start();
+	public static void connectToServer(String computer, int port, GameProtocol protocol){
+		GameClient.computer = computer;
+		GameClient.port = port;
+		GameClient.protocol = protocol;
+		(new Thread(new GameClient())).start();
 	}
 	
 	public static void disconnectFromServer(String message){

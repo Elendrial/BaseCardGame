@@ -13,7 +13,7 @@ public class Display extends Canvas{
 	public int scale = 1;
 	
 	public Display(Window window) {
-		setBounds(0, 0, window.WIDTH, window.HEIGHT);
+		setBounds(0, 0, window.width, window.height);
 		this.addKeyListener(WindowListener.wListener);
 		this.addMouseListener(WindowListener.wListener);
 		this.addMouseMotionListener(WindowListener.wListener);
