@@ -78,25 +78,37 @@ public class Window implements Runnable{
     
     // Tick is deliberately throttled, it should only happen ever 'x' ms
     // fps should happen as fast as it can, since it renders
-    public int fps = 0;
+    public int fps = 0, fpsCap = 30;
     @Override
     public void run() {
         double fpsTimer = System.currentTimeMillis();
-    	while(Controller.isRunning && isRunning){
-            
-            // This is NOT to sleep, but to limit the game loop
+        int sleepTime = 10, sparePasses = 0;
+        
+        while(Controller.isRunning && isRunning){
+            //TODO: Ticking
+            // This is to limit the render loop
             try {
-                Thread.sleep(1);
+                Thread.sleep(10);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
 
-            render();
-            fps++;
+			if (fps < fpsCap) {
+				render();
+				fps++;
+			}
+			else{
+				sparePasses++;
+			}
             
             if(System.currentTimeMillis() - fpsTimer >= 1000){
+            	if(fps < fpsCap && sleepTime > 1) // This should smoothen frame-rate, while minimising useless passes.
+            		sleepTime--;
+            	else if(sparePasses > 50) sleepTime++;
+            	
                 fps = 0;
                 fpsTimer += 1000;
+                sparePasses = 0;
             }
         }
 

@@ -51,9 +51,7 @@ public abstract class GameProtocol extends Thread{
 	
 	public abstract void recieveData();
 	
-	public abstract void sendSetup();
-	
-	public abstract void recieveSetup();
+	public abstract void generalSetup();
 
 	public abstract void disconnect(String message);
 	

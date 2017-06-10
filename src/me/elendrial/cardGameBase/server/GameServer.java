@@ -65,6 +65,12 @@ public class GameServer implements Runnable {
 		return protocolType;
 	}
 
+	public static ArrayList<GameProtocol> getConnections() {
+		return connections;
+	}
+	
+	
+
 	// Kept incase something goes wrong.
 	/*
 	private void hostServer(){
