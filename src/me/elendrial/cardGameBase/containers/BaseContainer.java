@@ -14,6 +14,7 @@ public class BaseContainer {
 	public StandardDeck[] decks;
 	public ArrayList<BaseCardContainer> shownCards = new ArrayList<BaseCardContainer>();
 	public BufferedImage background;
+	public String identifier;
 	
 	public int players;
 	public int turn = 0;

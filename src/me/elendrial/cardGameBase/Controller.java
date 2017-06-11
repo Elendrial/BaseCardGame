@@ -46,7 +46,7 @@ public class Controller {
 	}
 	
 	public static void render(Graphics g){
-		mainContainer.render(g);
+		if(Controller.mainContainer!=null) mainContainer.render(g);
 	}
 	
 }

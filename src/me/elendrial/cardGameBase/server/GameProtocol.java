@@ -43,7 +43,7 @@ public abstract class GameProtocol extends Thread{
 		this.in = new BufferedReader(new InputStreamReader(socket.getInputStream())); // Reading what comes in from socket.
 	}
 	
-	public abstract void sendData();
+	public void sendData(){}
 	
 	public void sendData(String s){
 		out.println(s);
