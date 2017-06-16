@@ -69,37 +69,4 @@ public class GameServer implements Runnable {
 		return connections;
 	}
 	
-	
-
-	// Kept incase something goes wrong.
-	/*
-	private void hostServer(){
-		System.out.println("[Server]: Opening server on port: " + port);
-		
-		try (	ServerSocket serverSocket =	new ServerSocket(port);
-				Socket clientSocket = serverSocket.accept();     
-				
-				PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);                   
-				BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-			) {
-			
-			protocol.setupVars(out, in);
-			
-			System.out.println("[Server]: Server open and client " + clientSocket.getInetAddress().getHostName() + " has connected successfully");
-			
-			while(running){
-				// TODO: Check that this all works somehow, may need to make the basic hearthstone first, who knows?
-				protocol.recieveData();
-				Thread.sleep(1);
-			}
-			
-		} catch (IOException | InterruptedException e) {
-			System.out.println("Exception caught when trying to listen on port "
-					+ port + " or listening for a connection");
-			System.out.println(e.getMessage());
-		}
-		
-	}
-*/
-	
 }

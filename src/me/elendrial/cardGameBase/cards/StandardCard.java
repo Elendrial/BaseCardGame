@@ -15,10 +15,10 @@ public class StandardCard /*implements Serializable*/{
 	
 	public StandardCard(){}
 	
-	public StandardCard(String name, String desc, String code, String textureName, String backTextureName, HashMap<String, Object> identifiers) {
+	public StandardCard(String name, String desc, String id, String textureName, String backTextureName, HashMap<String, Object> identifiers) {
 		this.name = name;
 		this.text = desc;
-		this.id = code;
+		this.id = id;
 		this.textureName = textureName.contains("textures/cards/") ? textureName : "textures/cards/" + textureName;
 		this.backTextureName =  backTextureName.contains("textures/cards/") ? backTextureName : "textures/cards/" + backTextureName;
 		this.identifiers = identifiers;
