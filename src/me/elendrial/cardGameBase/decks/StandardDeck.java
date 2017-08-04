@@ -43,7 +43,7 @@ public class StandardDeck {
 		this.sizeOfTexture = size;
 		this.maxDeckSize = maxDeckSize;
 		
-		cardBack = TextureHelper.getImage(cardBackTextureName.contains("textures/cards/") ? cardBackTextureName : "textures/cards/" + cardBackTextureName);
+		cardBack = TextureHelper.getImage(cardBackTextureName.contains("textures/cards/back/") ? cardBackTextureName : "textures/cards/back/" + cardBackTextureName);
 	}
 
 	
@@ -70,6 +70,22 @@ public class StandardDeck {
 		return cards.size();
 	}
 
+	public void setDimensions(Point size){
+		this.sizeOfTexture = size;
+	}
+	
+	public void setDimensions(int x, int y){
+		this.sizeOfTexture = new Point(x,y);
+	}
+	
+	public void setPosition(Point position){
+		this.positionInContainer = position;
+	}
+	
+	public void setPosition(int x, int y){
+		this.positionInContainer = new Point(x,y);
+	}
+	
 	public void render(Graphics g) {
 		g.drawImage(cardBack, positionInContainer.x, positionInContainer.y, sizeOfTexture.x, sizeOfTexture.y, null);
 	}
